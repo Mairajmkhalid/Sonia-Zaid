@@ -153,3 +153,13 @@
     letter-spacing: -0.02em;
   }
 }
+
+@keyframes floatY {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(0, -18px, 0); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; }
+  50%      { opacity: 1; }
+}
