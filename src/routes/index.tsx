@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import portrait from "@/assets/sonia-portrait.png.asset.json";
 
 // No head() here: the home route inherits title/description/og/twitter from
@@ -9,6 +10,34 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const portraitRef = useRef<HTMLImageElement | null>(null);
+
+  useEffect(() => {
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const el = portraitRef.current;
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const vh = window.innerHeight || 1;
+        // Progress from -1 (below) to 1 (above)
+        const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
+        // Subtle drift: portrait moves slower than page scroll
+        const shift = Math.max(-60, Math.min(60, -progress * 40));
+        el.style.transform = `translate3d(0, ${shift}px, 0) scale(1.08)`;
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* Top bar */}
@@ -48,11 +77,13 @@ function Index() {
         <div className="md:col-span-5">
           <div className="relative overflow-hidden rounded-sm bg-secondary">
             <img
+              ref={portraitRef}
               src={portrait.url}
               alt="Portrait of Sonia Zaid, Chief Operating Officer at HIGH-Q Pharmaceuticals"
               width={1024}
               height={1280}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover will-change-transform"
+              style={{ transform: "translate3d(0,0,0) scale(1.08)" }}
             />
             <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between text-xs uppercase tracking-[0.2em] text-primary-foreground mix-blend-difference">
               <span>Portrait, 2026</span>
