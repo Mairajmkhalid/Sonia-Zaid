@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import portrait from "@/assets/sonia-portrait.jpg";
+import portrait from "@/assets/sonia-portrait.png.asset.json";
 
 // No head() here: the home route inherits title/description/og/twitter from
 // __root.tsx, and ships no og:image so serve-time hosting can inject the
@@ -48,7 +48,7 @@ function Index() {
         <div className="md:col-span-5">
           <div className="relative overflow-hidden rounded-sm bg-secondary">
             <img
-              src={portrait}
+              src={portrait.url}
               alt="Portrait of Sonia Zaid, Chief Operating Officer at HIGH-Q Pharmaceuticals"
               width={1024}
               height={1280}
