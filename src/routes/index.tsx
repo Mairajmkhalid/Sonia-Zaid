@@ -49,6 +49,24 @@ function Index() {
     };
   }, []);
 
+  // Scroll reveal: fade + rise for elements with .reveal
+  useEffect(() => {
+    const items = document.querySelectorAll<HTMLElement>(".reveal");
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
+    );
+    items.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* Top bar */}
@@ -62,10 +80,10 @@ function Index() {
           <span className="font-serif text-xl italic">Sonia Zaid</span>
         </a>
         <nav className="hidden gap-8 text-xs uppercase tracking-[0.2em] text-muted-foreground md:flex">
-          <a href="#profile" className="hover:text-foreground">Profile</a>
-          <a href="#practice" className="hover:text-foreground">Practice</a>
-          <a href="#journey" className="hover:text-foreground">Journey</a>
-          <a href="#contact" className="hover:text-foreground">Contact</a>
+          <a href="#profile" className="nav-link hover:text-foreground">Profile</a>
+          <a href="#practice" className="nav-link hover:text-foreground">Practice</a>
+          <a href="#journey" className="nav-link hover:text-foreground">Journey</a>
+          <a href="#contact" className="nav-link hover:text-foreground">Contact</a>
         </nav>
         <a href="#contact" className="text-xs uppercase tracking-[0.2em] text-accent hover:opacity-80">Get in touch →</a>
       </header>
@@ -73,29 +91,29 @@ function Index() {
       {/* Hero */}
       <section className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 pb-20 pt-8 md:grid-cols-12 md:gap-16 md:px-12 md:pt-16">
         <div ref={heroTextRef} className="md:col-span-7 md:pr-8 will-change-transform">
-          <p className="mb-8 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+          <p className="reveal mb-8 text-xs uppercase tracking-[0.3em] text-muted-foreground">
             Chief Operating Officer · Karachi, Pakistan
           </p>
-          <h1 className="overflow-visible py-4 leading-[1] text-7xl md:text-9xl" style={{ fontFamily: '"Great Vibes", "Segoe Script", cursive', background: "linear-gradient(180deg,#f5d97a 0%,#c9a24a 45%,#8a6a1f 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", color: "transparent" }}>
+          <h1 className="reveal overflow-visible py-4 leading-[1] text-7xl md:text-9xl" style={{ fontFamily: '"Great Vibes", "Segoe Script", cursive', backgroundImage: "linear-gradient(90deg,#f5d97a 0%,#c9a24a 25%,#f0d78c 50%,#c9a24a 75%,#8a6a1f 100%)", backgroundSize: "200% 100%", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", color: "transparent", animation: "shimmer 6s linear infinite" }}>
             Sonia Zaid
           </h1>
-          <p className="mt-10 max-w-xl text-lg leading-relaxed text-muted-foreground">
+          <p className="reveal mt-10 max-w-xl text-lg leading-relaxed text-muted-foreground">
             Operations leader at <span className="text-foreground">HIGH-Q Pharmaceuticals</span>, orchestrating supply chain, regulatory affairs, business development and export across a company now ranked
             <span className="text-foreground"> 9th in the industry </span>
             with the highest growth rate.
           </p>
-          <div className="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8 md:max-w-lg">
+          <div className="reveal mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8 md:max-w-lg">
             <Stat value="16+" label="Years at HIGH-Q" />
             <Stat value="9th" label="Industry rank" />
             <Stat value="#1" label="Growth rate" />
           </div>
         </div>
-        <div className="md:col-span-5">
+        <div className="reveal md:col-span-5">
           <div className="relative mx-auto w-full max-w-[440px]">
             {/* Ambient glow behind frame */}
             <div
               aria-hidden
-              className="pointer-events-none absolute -inset-10 rounded-[40px] bg-[radial-gradient(closest-side,rgba(120,170,255,0.28),transparent_70%)] blur-2xl"
+              className="pointer-events-none absolute -inset-10 rounded-[40px] bg-[radial-gradient(closest-side,rgba(201,168,76,0.30),transparent_70%)] blur-2xl"
             />
 
             {/* Particles floating around the frame */}
@@ -117,7 +135,7 @@ function Index() {
                       height: `${size}px`,
                       opacity: 0.75,
                       animation: `floatY ${dur}s ease-in-out ${delay}s infinite alternate, twinkle ${dur * 0.8}s ease-in-out ${delay}s infinite`,
-                      boxShadow: "0 0 10px 2px rgba(140,180,255,0.7)",
+                      boxShadow: "0 0 10px 2px rgba(240,215,140,0.7)",
                     }}
                   />
                 );
@@ -125,7 +143,7 @@ function Index() {
             </div>
 
             {/* Portrait frame (rectangle) */}
-            <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-secondary ring-1 ring-accent/30 shadow-[0_30px_80px_-30px_rgba(120,170,255,0.5)]">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-secondary ring-1 ring-accent/40 shadow-[0_30px_80px_-30px_rgba(201,168,76,0.55)]">
               <img
                 ref={portraitRef}
                 src={portrait.url}
@@ -155,11 +173,11 @@ function Index() {
       {/* Profile / Summary */}
       <section id="profile" className="border-y border-border bg-card">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 py-24 md:grid-cols-12 md:px-12">
-          <div className="md:col-span-4">
+          <div className="reveal md:col-span-4">
             <p className="text-xs uppercase tracking-[0.3em] text-accent">On the record</p>
             <h2 className="mt-4 font-serif text-4xl md:text-5xl">A note from Sonia.</h2>
           </div>
-          <div className="md:col-span-8">
+          <div className="reveal md:col-span-8">
             <p className="font-serif text-2xl italic leading-relaxed text-foreground md:text-3xl">
               “Through effective leadership, strategic planning and unwavering dedication, we've elevated our position in the industry — witnessing the company's ascent to the 9th position with the highest growth rate.”
             </p>
@@ -177,7 +195,7 @@ function Index() {
 
       {/* Practice */}
       <section id="practice" className="mx-auto max-w-7xl px-6 py-24 md:px-12">
-        <div className="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div className="reveal mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-accent">The practice</p>
             <h2 className="mt-4 font-serif text-5xl md:text-6xl">Six disciplines,<br/><span className="italic">one operating rhythm.</span></h2>
@@ -188,7 +206,11 @@ function Index() {
         </div>
         <div className="grid grid-cols-1 gap-px overflow-hidden rounded-sm border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
           {practice.map((p, i) => (
-            <article key={p.title} className="group bg-background p-8 transition-colors hover:bg-card">
+            <article
+              key={p.title}
+              className="group reveal hover-lift bg-background p-8 hover:bg-card"
+              style={{ transitionDelay: `${i * 80}ms` }}
+            >
               <div className="mb-10 flex items-baseline justify-between text-xs uppercase tracking-[0.25em] text-muted-foreground">
                 <span>0{i + 1}</span>
                 <span>{p.tag}</span>
@@ -203,14 +225,18 @@ function Index() {
       {/* Journey */}
       <section id="journey" className="border-t border-border bg-secondary/40">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 py-24 md:grid-cols-12 md:px-12">
-          <div className="md:col-span-4">
+          <div className="reveal md:col-span-4">
             <p className="text-xs uppercase tracking-[0.3em] text-accent">The journey</p>
             <h2 className="mt-4 font-serif text-5xl">Experience<br/><span className="italic">& education.</span></h2>
           </div>
-          <div className="md:col-span-8">
+          <div className="reveal md:col-span-8">
             <ol className="divide-y divide-border">
-              {timeline.map((t) => (
-                <li key={t.title + t.year} className="grid grid-cols-12 gap-6 py-8">
+              {timeline.map((t, i) => (
+                <li
+                  key={t.title + t.year}
+                  className="reveal grid grid-cols-12 gap-6 py-8"
+                  style={{ transitionDelay: `${i * 120}ms` }}
+                >
                   <div className="col-span-3 font-serif text-2xl text-accent">{t.year}</div>
                   <div className="col-span-9">
                     <h3 className="font-serif text-2xl">{t.title}</h3>
@@ -226,7 +252,7 @@ function Index() {
 
       {/* Skills strip */}
       <section className="border-y border-border overflow-hidden">
-        <div className="flex whitespace-nowrap py-8 text-4xl md:text-6xl font-serif italic text-muted-foreground">
+        <div className="animate-marquee flex w-max whitespace-nowrap py-8 text-4xl md:text-6xl font-serif italic text-muted-foreground">
           <MarqueeRow />
           <MarqueeRow />
         </div>
@@ -235,7 +261,7 @@ function Index() {
       {/* Contact */}
       <section id="contact" className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-12">
-          <div className="md:col-span-6">
+          <div className="reveal md:col-span-6">
             <p className="text-xs uppercase tracking-[0.3em] text-accent">Correspondence</p>
             <h2 className="mt-4 font-serif text-6xl md:text-7xl leading-[0.95]">
               Let's build<br/><span className="italic">what's next.</span>
@@ -244,7 +270,7 @@ function Index() {
               For partnerships, speaking invitations and press enquiries — reach out directly.
             </p>
           </div>
-          <div className="md:col-span-6 md:pt-8">
+          <div className="reveal md:col-span-6 md:pt-8">
             <dl className="divide-y divide-border border-y border-border">
               <ContactRow label="Email" value="ssk.aqua@gmail.com" href="mailto:ssk.aqua@gmail.com" />
               <ContactRow label="Mobile" value="+92 334 379 6572" href="tel:+923343796572" />

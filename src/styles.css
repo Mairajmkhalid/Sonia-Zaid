@@ -63,26 +63,26 @@
 
 :root {
   --radius: 0.625rem;
-  /* Navy Trust palette */
-  --background: oklch(0.17 0.05 260);
-  --foreground: oklch(0.95 0.015 240);
-  --card: oklch(0.22 0.055 260);
-  --card-foreground: oklch(0.95 0.015 240);
-  --popover: oklch(0.22 0.055 260);
-  --popover-foreground: oklch(0.95 0.015 240);
-  --primary: oklch(0.93 0.02 240);
-  --primary-foreground: oklch(0.17 0.05 260);
-  --secondary: oklch(0.28 0.06 260);
-  --secondary-foreground: oklch(0.95 0.015 240);
-  --muted: oklch(0.28 0.055 260);
-  --muted-foreground: oklch(0.72 0.04 240);
-  --accent: oklch(0.68 0.11 240);
-  --accent-foreground: oklch(0.17 0.05 260);
+  /* Emerald Prestige palette — deep emerald + gold */
+  --background: oklch(0.19 0.045 160);
+  --foreground: oklch(0.96 0.02 90);
+  --card: oklch(0.24 0.055 160);
+  --card-foreground: oklch(0.96 0.02 90);
+  --popover: oklch(0.24 0.055 160);
+  --popover-foreground: oklch(0.96 0.02 90);
+  --primary: oklch(0.78 0.14 85);
+  --primary-foreground: oklch(0.19 0.045 160);
+  --secondary: oklch(0.30 0.06 160);
+  --secondary-foreground: oklch(0.96 0.02 90);
+  --muted: oklch(0.30 0.05 160);
+  --muted-foreground: oklch(0.78 0.035 95);
+  --accent: oklch(0.80 0.14 85);
+  --accent-foreground: oklch(0.19 0.045 160);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.32 0.05 260);
-  --input: oklch(0.32 0.05 260);
-  --ring: oklch(0.68 0.11 240);
+  --border: oklch(0.34 0.05 160);
+  --input: oklch(0.34 0.05 160);
+  --ring: oklch(0.80 0.14 85);
   --font-serif: "DM Serif Display", ui-serif, Georgia, serif;
   --font-sans: "Fira Sans", ui-sans-serif, system-ui, sans-serif;
   --chart-1: oklch(0.646 0.222 41.116);
@@ -162,4 +162,69 @@
 @keyframes twinkle {
   0%, 100% { opacity: 0.25; }
   50%      { opacity: 1; }
+}
+
+@keyframes reveal-up {
+  0%   { opacity: 0; transform: translate3d(0, 30px, 0); filter: blur(6px); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0); filter: blur(0); }
+}
+
+@keyframes marquee {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Scroll-reveal utility */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  filter: blur(6px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.9s ease;
+  will-change: opacity, transform, filter;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+}
+
+/* Marquee row */
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* Lift on hover */
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.4s ease, background-color 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px -25px color-mix(in oklab, var(--accent) 55%, transparent);
+}
+
+/* Animated underline for nav links */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 1px;
+  width: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
