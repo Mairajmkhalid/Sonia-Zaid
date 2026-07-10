@@ -12,16 +12,20 @@ export const Route = createFileRoute("/")({
 function Index() {
   const portraitRef = useRef<HTMLImageElement | null>(null);
   const heroTextRef = useRef<HTMLDivElement | null>(null);
-  const tiltRef = useRef<HTMLDivElement | null>(null);
-  const glareRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     let raf = 0;
+    let mouseY = 0;
     const onScroll = () => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
+        const el = portraitRef.current;
         const txt = heroTextRef.current;
         const y = window.scrollY || 0;
+        if (el) {
+          const shift = -y * 0.25 + mouseY * 10;
+          el.style.transform = `translate3d(0, ${shift}px, 0) scale(1.12)`;
+        }
         if (txt) {
           txt.style.transform = `translate3d(0, ${y * 0.08}px, 0)`;
           txt.style.opacity = String(Math.max(0.2, 1 - y / 600));
@@ -29,46 +33,18 @@ function Index() {
       });
     };
     const onMouse = (e: MouseEvent) => {
-      const card = tiltRef.current;
-      const img = portraitRef.current;
-      const glare = glareRef.current;
-      if (!card) return;
-      const rect = card.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width;   // 0..1
-      const py = (e.clientY - rect.top) / rect.height;   // 0..1
-      // Only react when cursor is anywhere reasonable near the card;
-      // for far-away positions, ease back to center.
-      const cx = Math.max(-0.5, Math.min(1.5, px)) - 0.5;
-      const cy = Math.max(-0.5, Math.min(1.5, py)) - 0.5;
-      const rotY = cx * 14;   // deg
-      const rotX = -cy * 14;  // deg
-      card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-      if (img) {
-        img.style.transform = `translate3d(${-cx * 18}px, ${-cy * 18}px, 40px) scale(1.12)`;
-      }
-      if (glare) {
-        glare.style.background = `radial-gradient(circle at ${px * 100}% ${py * 100}%, rgba(255,255,255,0.28), rgba(255,255,255,0) 55%)`;
-      }
-    };
-    const onLeave = () => {
-      const card = tiltRef.current;
-      const img = portraitRef.current;
-      const glare = glareRef.current;
-      if (card) card.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
-      if (img) img.style.transform = "translate3d(0,0,0) scale(1.08)";
-      if (glare) glare.style.background = "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12), rgba(255,255,255,0) 60%)";
+      mouseY = (e.clientY / (window.innerHeight || 1)) - 0.5;
+      onScroll();
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     window.addEventListener("mousemove", onMouse, { passive: true });
-    window.addEventListener("mouseleave", onLeave);
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       window.removeEventListener("mousemove", onMouse);
-      window.removeEventListener("mouseleave", onLeave);
     };
   }, []);
 
@@ -108,26 +84,16 @@ function Index() {
             <Stat value="#1" label="Growth rate" />
           </div>
         </div>
-        <div className="md:col-span-5" style={{ perspective: "1000px" }}>
-          <div
-            ref={tiltRef}
-            className="relative overflow-hidden rounded-sm bg-secondary h-[520px] md:h-[640px] shadow-2xl will-change-transform transition-transform duration-200 ease-out"
-            style={{ transformStyle: "preserve-3d" }}
-          >
+        <div className="md:col-span-5">
+          <div className="relative overflow-hidden rounded-sm bg-secondary h-[520px] md:h-[640px]">
             <img
               ref={portraitRef}
               src={portrait.url}
               alt="Portrait of Sonia Zaid, Chief Operating Officer at HIGH-Q Pharmaceuticals"
               width={1024}
               height={1280}
-              className="absolute inset-0 h-full w-full object-cover will-change-transform transition-transform duration-200 ease-out"
-              style={{ transform: "translate3d(0,0,0) scale(1.08)" }}
-            />
-            <div
-              ref={glareRef}
-              aria-hidden
-              className="pointer-events-none absolute inset-0 mix-blend-overlay transition-[background] duration-150"
-              style={{ background: "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12), rgba(255,255,255,0) 60%)" }}
+              className="absolute inset-0 h-full w-full object-cover will-change-transform transition-transform duration-75"
+              style={{ transform: "translate3d(0,0,0) scale(1.12)" }}
             />
             <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between text-xs uppercase tracking-[0.2em] text-primary-foreground mix-blend-difference">
               <span>Portrait, 2026</span>
