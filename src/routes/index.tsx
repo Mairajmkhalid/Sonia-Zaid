@@ -96,41 +96,21 @@ function Index() {
           </div>
         </div>
         <div className="reveal order-1 md:order-2 md:col-span-5">
-          <div className="relative mx-auto w-full max-w-[440px]">
-            {/* Ambient glow behind frame */}
+          <div className="relative mx-auto w-full max-w-[440px] overflow-visible">
+            {/* Ambient gold radiance */}
             <div
               aria-hidden
-              className="pointer-events-none absolute -inset-10 rounded-[40px] bg-[radial-gradient(closest-side,rgba(201,168,76,0.30),transparent_70%)] blur-2xl"
+              className="pointer-events-none absolute -inset-24 rounded-full bg-[radial-gradient(circle_at_center,color-mix(in_oklab,var(--accent)_8%,transparent)_0%,transparent_70%)] blur-2xl"
             />
 
-            {/* Particles floating around the frame */}
-            <div aria-hidden className="pointer-events-none absolute -inset-16 overflow-visible">
-              {Array.from({ length: 80 }).map((_, i) => {
-                const top = (i * 53) % 100;
-                const left = (i * 37) % 100;
-                const size = (i % 3) + 2;
-                const delay = (i % 7) * 0.35;
-                const dur = 3.5 + (i % 5);
-                return (
-                  <span
-                    key={`p-${i}`}
-                    className="absolute rounded-full bg-accent"
-                    style={{
-                      top: `${top}%`,
-                      left: `${left}%`,
-                      width: `${size}px`,
-                      height: `${size}px`,
-                      opacity: 0.75,
-                      animation: `floatY ${dur}s ease-in-out ${delay}s infinite alternate, twinkle ${dur * 0.8}s ease-in-out ${delay}s infinite`,
-                      boxShadow: "0 0 10px 2px rgba(240,215,140,0.7)",
-                    }}
-                  />
-                );
-              })}
-            </div>
+            {/* Architectural offset outline */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-6 translate-x-3 translate-y-3 border border-accent/20"
+            />
 
-            {/* Portrait frame (rectangle) */}
-            <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-secondary ring-1 ring-accent/40 shadow-[0_30px_80px_-30px_rgba(201,168,76,0.55)]">
+            {/* Main portrait shell */}
+            <div className="relative aspect-[4/5] overflow-hidden rounded-md border border-accent/40 bg-secondary shadow-[0_60px_100px_-20px_rgba(0,0,0,0.9)]">
               <img
                 ref={portraitRef}
                 src={portrait.url}
@@ -139,19 +119,58 @@ function Index() {
                 height={1280}
                 className="h-full w-full object-cover"
               />
-              <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-foreground/10" />
-              {/* Corner marks */}
-              <span className="pointer-events-none absolute left-3 top-3 h-4 w-4 border-l border-t border-accent/60" />
-              <span className="pointer-events-none absolute right-3 top-3 h-4 w-4 border-r border-t border-accent/60" />
-              <span className="pointer-events-none absolute left-3 bottom-3 h-4 w-4 border-l border-b border-accent/60" />
-              <span className="pointer-events-none absolute right-3 bottom-3 h-4 w-4 border-r border-b border-accent/60" />
+
+              {/* Internal prestige glow overlay */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-background/60 via-transparent to-accent/10"
+              />
+
+              {/* Inset metallic rim */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-accent/30"
+              />
+
+              {/* Precision corner brackets */}
+              <div aria-hidden className="pointer-events-none absolute left-0 top-0 h-16 w-16">
+                <div className="absolute left-6 top-6 h-10 w-px bg-accent/80" />
+                <div className="absolute left-6 top-6 h-px w-10 bg-accent/80" />
+              </div>
+              <div aria-hidden className="pointer-events-none absolute bottom-0 right-0 h-16 w-16 rotate-180">
+                <div className="absolute left-6 top-6 h-10 w-px bg-accent/80" />
+                <div className="absolute left-6 top-6 h-px w-10 bg-accent/80" />
+              </div>
+
+              {/* Subtle vignette */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,var(--background)/50_100%)]"
+              />
             </div>
 
-            {/* Caption */}
-            <div className="mt-3 flex items-end justify-between text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              <span>Portrait, 2026</span>
-              <span>№ 01</span>
+            {/* Floating executive nameplate */}
+            <div className="relative z-10 mx-auto -mt-6 w-[92%] border border-accent/60 bg-background/90 p-5 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] backdrop-blur-md">
+              <div className="relative flex flex-col items-center">
+                <div className="mb-3 h-0.5 w-12 bg-gradient-to-r from-transparent via-accent to-transparent" />
+                <h3 className="font-serif text-2xl font-medium uppercase tracking-[0.18em] text-accent">
+                  Sonia Zaid
+                </h3>
+                <div className="flex w-full items-center gap-3 px-2">
+                  <div className="h-px flex-1 bg-gradient-to-r from-transparent to-accent/40" />
+                  <p className="whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.4em] text-muted-foreground opacity-90">
+                    Chief Operating Officer
+                  </p>
+                  <div className="h-px flex-1 bg-gradient-to-l from-transparent to-accent/40" />
+                </div>
+              </div>
             </div>
+
+            {/* Side vertical accent line */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -right-4 top-1/3 h-40 w-0.5 -translate-y-1/2 bg-gradient-to-b from-transparent via-accent/20 to-transparent"
+            />
           </div>
         </div>
       </section>
