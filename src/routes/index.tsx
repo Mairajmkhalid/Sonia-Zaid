@@ -63,9 +63,8 @@ function Index() {
           <img
             src={logoAsset.url}
             alt="Sonia Zaid logo"
-            className="h-10 w-10 rounded-full object-cover ring-1 ring-accent/40"
+            className="h-12 w-auto object-contain"
           />
-          <span className="font-serif text-xl italic">Sonia Zaid</span>
         </a>
         <nav className="hidden gap-8 text-xs uppercase tracking-[0.2em] text-muted-foreground md:flex">
           <a href="#profile" className="nav-link hover:text-foreground">Profile</a>
