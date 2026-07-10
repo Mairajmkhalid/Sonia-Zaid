@@ -63,26 +63,26 @@
 
 :root {
   --radius: 0.625rem;
-  /* Emerald Prestige palette — deep emerald + gold */
-  --background: oklch(0.19 0.045 160);
+  /* Deep teal + gold */
+  --background: oklch(0.30 0.055 200);
   --foreground: oklch(0.96 0.02 90);
-  --card: oklch(0.24 0.055 160);
+  --card: oklch(0.26 0.05 200);
   --card-foreground: oklch(0.96 0.02 90);
-  --popover: oklch(0.24 0.055 160);
+  --popover: oklch(0.26 0.05 200);
   --popover-foreground: oklch(0.96 0.02 90);
-  --primary: oklch(0.78 0.14 85);
-  --primary-foreground: oklch(0.19 0.045 160);
-  --secondary: oklch(0.30 0.06 160);
+  --primary: oklch(0.80 0.14 85);
+  --primary-foreground: oklch(0.22 0.05 200);
+  --secondary: oklch(0.33 0.055 200);
   --secondary-foreground: oklch(0.96 0.02 90);
-  --muted: oklch(0.30 0.05 160);
-  --muted-foreground: oklch(0.78 0.035 95);
-  --accent: oklch(0.80 0.14 85);
-  --accent-foreground: oklch(0.19 0.045 160);
+  --muted: oklch(0.33 0.05 200);
+  --muted-foreground: oklch(0.80 0.03 95);
+  --accent: oklch(0.82 0.14 85);
+  --accent-foreground: oklch(0.22 0.05 200);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.34 0.05 160);
-  --input: oklch(0.34 0.05 160);
-  --ring: oklch(0.80 0.14 85);
+  --border: oklch(0.38 0.05 200);
+  --input: oklch(0.38 0.05 200);
+  --ring: oklch(0.82 0.14 85);
   --font-serif: "DM Serif Display", ui-serif, Georgia, serif;
   --font-sans: "Fira Sans", ui-sans-serif, system-ui, sans-serif;
   --chart-1: oklch(0.646 0.222 41.116);
@@ -142,10 +142,26 @@
 
   body {
     background-color: var(--color-background);
+    background-image:
+      radial-gradient(ellipse at 75% 15%, oklch(0.42 0.07 200) 0%, transparent 55%),
+      radial-gradient(ellipse at 15% 85%, oklch(0.22 0.05 200) 0%, transparent 60%);
+    background-attachment: fixed;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+  /* Grainy texture overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.28;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
   h1, h2, h3, .font-serif {
     font-family: var(--font-serif);
