@@ -265,5 +265,3 @@ const timeline = [
     org: "Karachi University · Pharmaceutical",
   },
 ];
-  );
-}
