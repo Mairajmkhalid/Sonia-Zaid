@@ -76,10 +76,8 @@ function Index() {
           <p className="mb-8 text-xs uppercase tracking-[0.3em] text-muted-foreground">
             Chief Operating Officer · Karachi, Pakistan
           </p>
-          <h1 className="font-serif text-6xl leading-[0.95] md:text-8xl">
-            Sonia
-            <br />
-            <span className="italic text-accent">Zaid.</span>
+          <h1 className="text-accent leading-[1] text-7xl md:text-9xl" style={{ fontFamily: '"Great Vibes", "Segoe Script", cursive' }}>
+            Sonia Zaid
           </h1>
           <p className="mt-10 max-w-xl text-lg leading-relaxed text-muted-foreground">
             Operations leader at <span className="text-foreground">HIGH-Q Pharmaceuticals</span>, orchestrating supply chain, regulatory affairs, business development and export across a company now ranked
