@@ -76,7 +76,7 @@ function Index() {
           <p className="mb-8 text-xs uppercase tracking-[0.3em] text-muted-foreground">
             Chief Operating Officer · Karachi, Pakistan
           </p>
-          <h1 className="text-accent leading-[1] text-7xl md:text-9xl" style={{ fontFamily: '"Great Vibes", "Segoe Script", cursive' }}>
+          <h1 className="leading-[1] text-7xl md:text-9xl" style={{ fontFamily: '"Great Vibes", "Segoe Script", cursive', background: "linear-gradient(180deg,#f5d97a 0%,#c9a24a 45%,#8a6a1f 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", color: "transparent" }}>
             Sonia Zaid
           </h1>
           <p className="mt-10 max-w-xl text-lg leading-relaxed text-muted-foreground">
