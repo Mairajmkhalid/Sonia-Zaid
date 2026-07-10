@@ -11,30 +11,40 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const portraitRef = useRef<HTMLImageElement | null>(null);
+  const heroTextRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     let raf = 0;
+    let mouseY = 0;
     const onScroll = () => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
         const el = portraitRef.current;
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const vh = window.innerHeight || 1;
-        // Progress from -1 (below) to 1 (above)
-        const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
-        // Subtle drift: portrait moves slower than page scroll
-        const shift = Math.max(-60, Math.min(60, -progress * 40));
-        el.style.transform = `translate3d(0, ${shift}px, 0) scale(1.08)`;
+        const txt = heroTextRef.current;
+        const y = window.scrollY || 0;
+        if (el) {
+          const shift = -y * 0.25 + mouseY * 10;
+          el.style.transform = `translate3d(0, ${shift}px, 0) scale(1.12)`;
+        }
+        if (txt) {
+          txt.style.transform = `translate3d(0, ${y * 0.08}px, 0)`;
+          txt.style.opacity = String(Math.max(0.2, 1 - y / 600));
+        }
       });
+    };
+    const onMouse = (e: MouseEvent) => {
+      mouseY = (e.clientY / (window.innerHeight || 1)) - 0.5;
+      onScroll();
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+    window.addEventListener("mousemove", onMouse, { passive: true });
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      window.removeEventListener("mousemove", onMouse);
     };
   }, []);
 
@@ -54,7 +64,7 @@ function Index() {
 
       {/* Hero */}
       <section className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 pb-20 pt-8 md:grid-cols-12 md:gap-16 md:px-12 md:pt-16">
-        <div className="md:col-span-7 md:pr-8">
+        <div ref={heroTextRef} className="md:col-span-7 md:pr-8 will-change-transform">
           <p className="mb-8 text-xs uppercase tracking-[0.3em] text-muted-foreground">
             Chief Operating Officer · Karachi, Pakistan
           </p>
@@ -75,15 +85,15 @@ function Index() {
           </div>
         </div>
         <div className="md:col-span-5">
-          <div className="relative overflow-hidden rounded-sm bg-secondary">
+          <div className="relative overflow-hidden rounded-sm bg-secondary h-[520px] md:h-[640px]">
             <img
               ref={portraitRef}
               src={portrait.url}
               alt="Portrait of Sonia Zaid, Chief Operating Officer at HIGH-Q Pharmaceuticals"
               width={1024}
               height={1280}
-              className="h-full w-full object-cover will-change-transform"
-              style={{ transform: "translate3d(0,0,0) scale(1.08)" }}
+              className="absolute inset-0 h-full w-full object-cover will-change-transform transition-transform duration-75"
+              style={{ transform: "translate3d(0,0,0) scale(1.12)" }}
             />
             <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between text-xs uppercase tracking-[0.2em] text-primary-foreground mix-blend-difference">
               <span>Portrait, 2026</span>
