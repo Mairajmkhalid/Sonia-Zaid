@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import portrait from "@/assets/sonia-portrait.png.asset.json";
+import logoAsset from "@/assets/logo.jpg.asset.json";
 
 // No head() here: the home route inherits title/description/og/twitter from
 // __root.tsx, and ships no og:image so serve-time hosting can inject the
@@ -52,7 +53,14 @@ function Index() {
     <main className="min-h-screen bg-background text-foreground">
       {/* Top bar */}
       <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 md:px-12">
-        <div className="font-serif text-xl italic">Sonia Zaid</div>
+        <a href="#" className="flex items-center gap-3">
+          <img
+            src={logoAsset.url}
+            alt="Sonia Zaid logo"
+            className="h-10 w-10 rounded-full object-cover ring-1 ring-accent/40"
+          />
+          <span className="font-serif text-xl italic">Sonia Zaid</span>
+        </a>
         <nav className="hidden gap-8 text-xs uppercase tracking-[0.2em] text-muted-foreground md:flex">
           <a href="#profile" className="hover:text-foreground">Profile</a>
           <a href="#practice" className="hover:text-foreground">Practice</a>
