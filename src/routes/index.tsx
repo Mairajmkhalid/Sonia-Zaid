@@ -48,7 +48,7 @@ function Index() {
         <div className="md:col-span-5">
           <div className="relative overflow-hidden rounded-sm bg-secondary">
             <img
-              src={portrait}
+              src={portrait.url}
               alt="Portrait of Sonia Zaid, Chief Operating Officer at HIGH-Q Pharmaceuticals"
               width={1024}
               height={1280}
