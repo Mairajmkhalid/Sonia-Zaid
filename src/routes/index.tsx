@@ -180,7 +180,7 @@ function Index() {
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 py-24 md:grid-cols-12 md:px-12">
           <div className="reveal md:col-span-4">
             <p className="text-xs uppercase tracking-[0.3em] text-accent">On the record</p>
-            <h2 className="mt-4 font-serif text-4xl md:text-5xl">A note from Sonia.</h2>
+            <h2 className="mt-4 font-serif text-4xl md:text-5xl text-accent">A note from Sonia.</h2>
           </div>
           <div className="reveal md:col-span-8">
             <p className="font-serif text-2xl italic leading-relaxed text-foreground md:text-3xl">
@@ -203,7 +203,7 @@ function Index() {
         <div className="reveal mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-accent">The practice</p>
-            <h2 className="mt-4 font-serif text-5xl md:text-6xl">Six disciplines,<br/><span className="italic">one operating rhythm.</span></h2>
+            <h2 className="mt-4 font-serif text-5xl md:text-6xl text-accent">Six disciplines,<br/><span className="italic">one operating rhythm.</span></h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
             A cross-functional portfolio spanning commercial, operational and compliance leadership across the pharmaceutical value chain.
@@ -220,7 +220,7 @@ function Index() {
                 <span>0{i + 1}</span>
                 <span>{p.tag}</span>
               </div>
-              <h3 className="font-serif text-3xl leading-tight">{p.title}</h3>
+              <h3 className="font-serif text-3xl leading-tight text-accent">{p.title}</h3>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
             </article>
           ))}
@@ -232,7 +232,7 @@ function Index() {
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 py-24 md:grid-cols-12 md:px-12">
           <div className="reveal md:col-span-4">
             <p className="text-xs uppercase tracking-[0.3em] text-accent">The journey</p>
-            <h2 className="mt-4 font-serif text-5xl">Experience<br/><span className="italic">& education.</span></h2>
+            <h2 className="mt-4 font-serif text-5xl text-accent">Experience<br/><span className="italic">& education.</span></h2>
           </div>
           <div className="reveal md:col-span-8">
             <ol className="divide-y divide-border">
@@ -244,7 +244,7 @@ function Index() {
                 >
                   <div className="col-span-3 font-serif text-2xl text-accent">{t.year}</div>
                   <div className="col-span-9">
-                    <h3 className="font-serif text-2xl">{t.title}</h3>
+                    <h3 className="font-serif text-2xl text-accent">{t.title}</h3>
                     <p className="mt-1 text-sm uppercase tracking-[0.2em] text-muted-foreground">{t.org}</p>
                     {t.detail && <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{t.detail}</p>}
                   </div>
@@ -268,7 +268,7 @@ function Index() {
         <div className="grid grid-cols-1 gap-16 md:grid-cols-12">
           <div className="reveal md:col-span-6">
             <p className="text-xs uppercase tracking-[0.3em] text-accent">Correspondence</p>
-            <h2 className="mt-4 font-serif text-6xl md:text-7xl leading-[0.95]">
+            <h2 className="mt-4 font-serif text-6xl md:text-7xl leading-[0.95] text-accent">
               Let's build<br/><span className="italic">what's next.</span>
             </h2>
             <p className="mt-8 max-w-md text-muted-foreground leading-relaxed">
