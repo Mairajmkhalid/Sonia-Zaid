@@ -77,7 +77,7 @@ function Index() {
 
       {/* Hero */}
       <section className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 pb-20 pt-8 md:grid-cols-12 md:gap-16 md:px-12 md:pt-16">
-        <div ref={heroTextRef} className="md:col-span-7 md:pr-8 will-change-transform">
+        <div ref={heroTextRef} className="order-2 md:order-1 md:col-span-7 md:pr-8 will-change-transform">
           <p className="reveal mb-8 text-xs uppercase tracking-[0.3em] text-muted-foreground">
             Chief Operating Officer · Karachi, Pakistan
           </p>
@@ -95,7 +95,7 @@ function Index() {
             <Stat value="#1" label="Growth rate" />
           </div>
         </div>
-        <div className="reveal md:col-span-5">
+        <div className="reveal order-1 md:order-2 md:col-span-5">
           <div className="relative mx-auto w-full max-w-[440px]">
             {/* Ambient glow behind frame */}
             <div
