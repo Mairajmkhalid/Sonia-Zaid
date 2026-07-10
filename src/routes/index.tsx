@@ -81,9 +81,37 @@ function Index() {
           <p className="reveal mb-8 text-xs uppercase tracking-[0.3em] text-muted-foreground">
             Chief Operating Officer · Karachi, Pakistan
           </p>
-          <h1 className="reveal overflow-visible py-4 leading-[1] text-7xl md:text-9xl" style={{ fontFamily: '"Great Vibes", "Segoe Script", cursive', backgroundImage: "linear-gradient(90deg,#f5d97a 0%,#c9a24a 25%,#f0d78c 50%,#c9a24a 75%,#8a6a1f 100%)", backgroundSize: "200% 100%", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", color: "transparent", animation: "shimmer 6s linear infinite" }}>
-            Sonia Zaid
-          </h1>
+          <div className="reveal relative overflow-visible py-4">
+            <div className="title-particles" aria-hidden="true">
+              {[
+                { l: "6%",  t: "72%", d: "6.5s", delay: "0s",   px: "18px",  py: "-90px" },
+                { l: "14%", t: "84%", d: "7.2s", delay: "1.1s", px: "-22px", py: "-110px" },
+                { l: "24%", t: "60%", d: "5.8s", delay: "2.3s", px: "14px",  py: "-70px" },
+                { l: "36%", t: "88%", d: "8s",   delay: "0.6s", px: "-10px", py: "-120px" },
+                { l: "48%", t: "70%", d: "6.8s", delay: "1.8s", px: "26px",  py: "-95px" },
+                { l: "58%", t: "82%", d: "7.5s", delay: "3s",   px: "-18px", py: "-105px" },
+                { l: "68%", t: "58%", d: "6.2s", delay: "0.3s", px: "12px",  py: "-80px" },
+                { l: "78%", t: "86%", d: "7.8s", delay: "2s",   px: "-24px", py: "-115px" },
+                { l: "86%", t: "68%", d: "6s",   delay: "1.4s", px: "20px",  py: "-90px" },
+                { l: "92%", t: "80%", d: "7s",   delay: "2.6s", px: "-14px", py: "-100px" },
+              ].map((p, i) => (
+                <span
+                  key={i}
+                  style={{
+                    left: p.l,
+                    top: p.t,
+                    ["--dur" as any]: p.d,
+                    ["--delay" as any]: p.delay,
+                    ["--px" as any]: p.px,
+                    ["--py" as any]: p.py,
+                  }}
+                />
+              ))}
+            </div>
+            <h1 className="gold-title relative overflow-visible leading-[1] text-7xl md:text-9xl" style={{ fontFamily: '"Great Vibes", "Segoe Script", cursive' }}>
+              Sonia Zaid
+            </h1>
+          </div>
           <p className="reveal mt-10 max-w-xl text-lg leading-relaxed text-muted-foreground">
             Operations leader at <span className="text-foreground">HIGH-Q Pharmaceuticals</span>, orchestrating supply chain, regulatory affairs, business development and export across a company now ranked
             <span className="text-foreground"> 9th in the industry </span>
@@ -180,7 +208,7 @@ function Index() {
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 py-24 md:grid-cols-12 md:px-12">
           <div className="reveal md:col-span-4">
             <p className="text-xs uppercase tracking-[0.3em] text-accent">On the record</p>
-            <h2 className="mt-4 font-serif text-4xl md:text-5xl text-accent">A note from Sonia.</h2>
+            <h2 className="gold-heading mt-4 font-serif text-4xl md:text-5xl text-accent">A note from Sonia.</h2>
           </div>
           <div className="reveal md:col-span-8">
             <p className="font-serif text-2xl italic leading-relaxed text-foreground md:text-3xl">
@@ -203,7 +231,7 @@ function Index() {
         <div className="reveal mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-accent">The practice</p>
-            <h2 className="mt-4 font-serif text-5xl md:text-6xl text-accent">Six disciplines,<br/><span className="italic">one operating rhythm.</span></h2>
+            <h2 className="gold-heading mt-4 font-serif text-5xl md:text-6xl text-accent">Six disciplines,<br/><span className="italic">one operating rhythm.</span></h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
             A cross-functional portfolio spanning commercial, operational and compliance leadership across the pharmaceutical value chain.
@@ -220,7 +248,7 @@ function Index() {
                 <span>0{i + 1}</span>
                 <span>{p.tag}</span>
               </div>
-              <h3 className="font-serif text-3xl leading-tight text-accent">{p.title}</h3>
+              <h3 className="gold-heading font-serif text-3xl leading-tight text-accent">{p.title}</h3>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
             </article>
           ))}
@@ -232,7 +260,7 @@ function Index() {
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 py-24 md:grid-cols-12 md:px-12">
           <div className="reveal md:col-span-4">
             <p className="text-xs uppercase tracking-[0.3em] text-accent">The journey</p>
-            <h2 className="mt-4 font-serif text-5xl text-accent">Experience<br/><span className="italic">& education.</span></h2>
+            <h2 className="gold-heading mt-4 font-serif text-5xl text-accent">Experience<br/><span className="italic">& education.</span></h2>
           </div>
           <div className="reveal md:col-span-8">
             <ol className="divide-y divide-border">
@@ -244,7 +272,7 @@ function Index() {
                 >
                   <div className="col-span-3 font-serif text-2xl text-accent">{t.year}</div>
                   <div className="col-span-9">
-                    <h3 className="font-serif text-2xl text-accent">{t.title}</h3>
+                    <h3 className="gold-heading font-serif text-2xl text-accent">{t.title}</h3>
                     <p className="mt-1 text-sm uppercase tracking-[0.2em] text-muted-foreground">{t.org}</p>
                     {t.detail && <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{t.detail}</p>}
                   </div>
@@ -268,7 +296,7 @@ function Index() {
         <div className="grid grid-cols-1 gap-16 md:grid-cols-12">
           <div className="reveal md:col-span-6">
             <p className="text-xs uppercase tracking-[0.3em] text-accent">Correspondence</p>
-            <h2 className="mt-4 font-serif text-6xl md:text-7xl leading-[0.95] text-accent">
+            <h2 className="gold-heading mt-4 font-serif text-6xl md:text-7xl leading-[0.95] text-accent">
               Let's build<br/><span className="italic">what's next.</span>
             </h2>
             <p className="mt-8 max-w-md text-muted-foreground leading-relaxed">
