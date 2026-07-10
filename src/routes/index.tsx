@@ -16,36 +16,24 @@ function Index() {
 
   useEffect(() => {
     let raf = 0;
-    let mouseY = 0;
     const onScroll = () => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
-        const el = portraitRef.current;
         const txt = heroTextRef.current;
         const y = window.scrollY || 0;
-        if (el) {
-          const shift = -y * 0.25 + mouseY * 10;
-          el.style.transform = `translate3d(0, ${shift}px, 0) scale(1.12)`;
-        }
         if (txt) {
           txt.style.transform = `translate3d(0, ${y * 0.08}px, 0)`;
           txt.style.opacity = String(Math.max(0.2, 1 - y / 600));
         }
       });
     };
-    const onMouse = (e: MouseEvent) => {
-      mouseY = (e.clientY / (window.innerHeight || 1)) - 0.5;
-      onScroll();
-    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
-    window.addEventListener("mousemove", onMouse, { passive: true });
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
-      window.removeEventListener("mousemove", onMouse);
     };
   }, []);
 
@@ -118,7 +106,7 @@ function Index() {
 
             {/* Particles floating around the frame */}
             <div aria-hidden className="pointer-events-none absolute -inset-16 overflow-visible">
-              {Array.from({ length: 26 }).map((_, i) => {
+              {Array.from({ length: 80 }).map((_, i) => {
                 const top = (i * 53) % 100;
                 const left = (i * 37) % 100;
                 const size = (i % 3) + 2;
@@ -150,8 +138,7 @@ function Index() {
                 alt="Portrait of Sonia Zaid, Chief Operating Officer at HIGH-Q Pharmaceuticals"
                 width={1024}
                 height={1280}
-                className="h-full w-full object-cover will-change-transform transition-transform duration-75"
-                style={{ transform: "translate3d(0,0,0) scale(1.08)" }}
+                className="h-full w-full object-cover"
               />
               <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-foreground/10" />
               {/* Corner marks */}
