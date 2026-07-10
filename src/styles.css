@@ -195,6 +195,76 @@
   100% { background-position: 200% 50%; }
 }
 
+@keyframes goldGlow {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 12px color-mix(in oklab, var(--accent) 35%, transparent))
+      drop-shadow(0 8px 24px color-mix(in oklab, var(--accent) 20%, transparent));
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 24px color-mix(in oklab, var(--accent) 65%, transparent))
+      drop-shadow(0 12px 40px color-mix(in oklab, var(--accent) 35%, transparent));
+  }
+}
+
+@keyframes particleFloat {
+  0%   { transform: translate3d(0, 0, 0) scale(0.6); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translate3d(var(--px, 20px), var(--py, -80px), 0) scale(1.1); opacity: 0; }
+}
+
+/* Gold shimmering title */
+.gold-title {
+  background-image: linear-gradient(
+    100deg,
+    #f8e29a 0%,
+    #d4a94a 18%,
+    #fff2c2 34%,
+    #e8c368 50%,
+    #b8862c 66%,
+    #f0d485 82%,
+    #8a6a1f 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation:
+    shimmer 5s linear infinite,
+    goldGlow 4.5s ease-in-out infinite;
+}
+
+/* Section heading drop-shadow */
+.gold-heading {
+  text-shadow:
+    0 1px 0 color-mix(in oklab, var(--accent) 15%, transparent),
+    0 10px 30px color-mix(in oklab, var(--accent) 22%, transparent),
+    0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* Gold particles around title */
+.title-particles {
+  position: absolute;
+  inset: -10% -5%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 0;
+}
+.title-particles span {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 30% 30%, #fff5c9, #e8c368 55%, transparent 70%);
+  box-shadow: 0 0 12px 2px color-mix(in oklab, var(--accent) 55%, transparent);
+  animation: particleFloat var(--dur, 6s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  opacity: 0;
+}
+
 /* Scroll-reveal utility */
 .reveal {
   opacity: 0;
