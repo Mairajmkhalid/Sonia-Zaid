@@ -85,17 +85,77 @@ function Index() {
           </div>
         </div>
         <div className="md:col-span-5">
-          <div className="relative overflow-hidden rounded-sm bg-secondary h-[520px] md:h-[640px]">
-            <img
-              ref={portraitRef}
-              src={portrait.url}
-              alt="Portrait of Sonia Zaid, Chief Operating Officer at HIGH-Q Pharmaceuticals"
-              width={1024}
-              height={1280}
-              className="absolute inset-0 h-full w-full object-cover will-change-transform transition-transform duration-75"
-              style={{ transform: "translate3d(0,0,0) scale(1.12)" }}
-            />
-            <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between text-xs uppercase tracking-[0.2em] text-primary-foreground mix-blend-difference">
+          <div className="relative mx-auto flex aspect-square w-full max-w-[520px] items-center justify-center">
+            {/* Particle orbits */}
+            <div className="pointer-events-none absolute inset-0">
+              <div className="absolute inset-0 rounded-full border border-accent/20 animate-[spin_40s_linear_infinite]">
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <span
+                    key={`o1-${i}`}
+                    className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent shadow-[0_0_10px_2px_rgba(120,170,255,0.6)]"
+                    style={{ transform: `rotate(${(360 / 8) * i}deg) translateY(-50%) translateY(-1px)` }}
+                  />
+                ))}
+              </div>
+              <div className="absolute inset-6 rounded-full border border-accent/15 animate-[spin_60s_linear_infinite_reverse]">
+                {Array.from({ length: 12 }).map((_, i) => (
+                  <span
+                    key={`o2-${i}`}
+                    className="absolute left-1/2 top-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground/70"
+                    style={{ transform: `rotate(${(360 / 12) * i}deg) translateY(-50%)` }}
+                  />
+                ))}
+              </div>
+              <div className="absolute inset-14 rounded-full border border-accent/10 animate-[spin_25s_linear_infinite]">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span
+                    key={`o3-${i}`}
+                    className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/80 shadow-[0_0_14px_4px_rgba(140,180,255,0.5)]"
+                    style={{ transform: `rotate(${(360 / 5) * i}deg) translateY(-50%)` }}
+                  />
+                ))}
+              </div>
+              {/* Floating twinkles */}
+              {Array.from({ length: 14 }).map((_, i) => {
+                const top = (i * 53) % 100;
+                const left = (i * 37) % 100;
+                const size = (i % 3) + 1;
+                const delay = (i % 7) * 0.4;
+                const dur = 3 + (i % 5);
+                return (
+                  <span
+                    key={`tw-${i}`}
+                    className="absolute rounded-full bg-foreground/80 animate-pulse"
+                    style={{
+                      top: `${top}%`,
+                      left: `${left}%`,
+                      width: `${size}px`,
+                      height: `${size}px`,
+                      animationDelay: `${delay}s`,
+                      animationDuration: `${dur}s`,
+                      boxShadow: "0 0 8px 2px rgba(180,200,255,0.6)",
+                    }}
+                  />
+                );
+              })}
+            </div>
+
+            {/* Portrait circle */}
+            <div className="relative aspect-square w-[78%] overflow-hidden rounded-full bg-secondary ring-1 ring-accent/30 shadow-[0_0_60px_-10px_rgba(120,170,255,0.4)]">
+              <img
+                ref={portraitRef}
+                src={portrait.url}
+                alt="Portrait of Sonia Zaid, Chief Operating Officer at HIGH-Q Pharmaceuticals"
+                width={1024}
+                height={1280}
+                className="h-full w-full object-cover will-change-transform transition-transform duration-75"
+                style={{ transform: "translate3d(0,0,0) scale(1.08)" }}
+              />
+              <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-foreground/10" />
+            </div>
+
+            {/* Caption */}
+            <div className="absolute -bottom-2 left-0 right-0 flex items-end justify-between text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
               <span>Portrait, 2026</span>
               <span>№ 01</span>
             </div>
