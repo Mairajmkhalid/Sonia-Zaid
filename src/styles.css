@@ -248,18 +248,22 @@
 /* Gold particles around title */
 .title-particles {
   position: absolute;
-  inset: -10% -5%;
+  inset: -30% -10%;
   pointer-events: none;
   overflow: visible;
   z-index: 0;
 }
 .title-particles span {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 9px;
+  height: 9px;
   border-radius: 9999px;
-  background: radial-gradient(circle at 30% 30%, #fff5c9, #e8c368 55%, transparent 70%);
-  box-shadow: 0 0 12px 2px color-mix(in oklab, var(--accent) 55%, transparent);
+  background: radial-gradient(circle at 30% 30%, #ffffff, #ffe27a 40%, #f2b23a 70%, transparent 78%);
+  box-shadow:
+    0 0 6px 1px #fff2a8,
+    0 0 18px 4px #f2b23a,
+    0 0 38px 10px color-mix(in oklab, #f2b23a 65%, transparent);
+  mix-blend-mode: screen;
   animation: particleFloat var(--dur, 6s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
   opacity: 0;
