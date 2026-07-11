@@ -82,32 +82,6 @@ function Index() {
             Chief Operating Officer · Karachi, Pakistan
           </p>
           <div className="reveal relative overflow-visible py-16 -mx-6 px-6 md:-mx-12 md:px-12 md:py-24">
-            <div className="title-particles" aria-hidden="true">
-              {[
-                { l: "6%",  t: "72%", d: "6.5s", delay: "0s",   px: "18px",  py: "-90px" },
-                { l: "14%", t: "84%", d: "7.2s", delay: "1.1s", px: "-22px", py: "-110px" },
-                { l: "24%", t: "60%", d: "5.8s", delay: "2.3s", px: "14px",  py: "-70px" },
-                { l: "36%", t: "88%", d: "8s",   delay: "0.6s", px: "-10px", py: "-120px" },
-                { l: "48%", t: "70%", d: "6.8s", delay: "1.8s", px: "26px",  py: "-95px" },
-                { l: "58%", t: "82%", d: "7.5s", delay: "3s",   px: "-18px", py: "-105px" },
-                { l: "68%", t: "58%", d: "6.2s", delay: "0.3s", px: "12px",  py: "-80px" },
-                { l: "78%", t: "86%", d: "7.8s", delay: "2s",   px: "-24px", py: "-115px" },
-                { l: "86%", t: "68%", d: "6s",   delay: "1.4s", px: "20px",  py: "-90px" },
-                { l: "92%", t: "80%", d: "7s",   delay: "2.6s", px: "-14px", py: "-100px" },
-              ].map((p, i) => (
-                <span
-                  key={i}
-                  style={{
-                    left: p.l,
-                    top: p.t,
-                    ["--dur" as any]: p.d,
-                    ["--delay" as any]: p.delay,
-                    ["--px" as any]: p.px,
-                    ["--py" as any]: p.py,
-                  }}
-                />
-              ))}
-            </div>
             <h1 className="gold-title relative overflow-visible leading-[1] text-7xl md:text-9xl" style={{ fontFamily: '"Great Vibes", "Segoe Script", cursive' }}>
               Sonia Zaid
             </h1>
