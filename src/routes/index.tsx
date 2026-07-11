@@ -81,7 +81,7 @@ function Index() {
           <p className="reveal mb-8 text-xs uppercase tracking-[0.3em] text-muted-foreground">
             Chief Operating Officer · Karachi, Pakistan
           </p>
-          <div className="reveal relative overflow-visible py-16 -mx-6 px-6 md:-mx-12 md:px-12 md:py-24">
+          <div className="reveal relative overflow-visible">
             <h1 className="relative overflow-visible leading-[1] text-7xl md:text-9xl text-accent" style={{ fontFamily: '"Great Vibes", cursive' }}>
               Sonia Zaid
             </h1>
