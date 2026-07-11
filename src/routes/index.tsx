@@ -80,8 +80,19 @@ function Index() {
           <p className="reveal mb-8 text-xs uppercase tracking-[0.3em] text-muted-foreground">
             Chief Operating Officer · Karachi, Pakistan
           </p>
-          <div className="reveal relative overflow-visible">
-            <h1 className="relative overflow-visible leading-[1] text-7xl md:text-9xl text-accent" style={{ fontFamily: '"Great Vibes", cursive' }}>
+          <div className="reveal group relative inline-block overflow-visible">
+            <span aria-hidden className="title-particles">
+              <span style={{ left: "8%", top: "62%", ["--dur" as string]: "3.2s", ["--delay" as string]: "0s", ["--px" as string]: "-30px", ["--py" as string]: "-110px" }} />
+              <span style={{ left: "22%", top: "78%", ["--dur" as string]: "3.8s", ["--delay" as string]: "0.2s", ["--px" as string]: "20px", ["--py" as string]: "-140px" }} />
+              <span style={{ left: "38%", top: "58%", ["--dur" as string]: "3.4s", ["--delay" as string]: "0.5s", ["--px" as string]: "-15px", ["--py" as string]: "-130px" }} />
+              <span style={{ left: "52%", top: "80%", ["--dur" as string]: "3.6s", ["--delay" as string]: "0.7s", ["--px" as string]: "35px", ["--py" as string]: "-160px" }} />
+              <span style={{ left: "66%", top: "60%", ["--dur" as string]: "3.3s", ["--delay" as string]: "0.3s", ["--px" as string]: "-25px", ["--py" as string]: "-120px" }} />
+              <span style={{ left: "78%", top: "76%", ["--dur" as string]: "3.9s", ["--delay" as string]: "0.9s", ["--px" as string]: "25px", ["--py" as string]: "-150px" }} />
+              <span style={{ left: "88%", top: "64%", ["--dur" as string]: "3.5s", ["--delay" as string]: "0.4s", ["--px" as string]: "-10px", ["--py" as string]: "-135px" }} />
+              <span style={{ left: "16%", top: "40%", ["--dur" as string]: "3.7s", ["--delay" as string]: "0.6s", ["--px" as string]: "15px", ["--py" as string]: "-100px" }} />
+              <span style={{ left: "72%", top: "38%", ["--dur" as string]: "3.4s", ["--delay" as string]: "0.1s", ["--px" as string]: "-20px", ["--py" as string]: "-105px" }} />
+            </span>
+            <h1 className="relative z-10 overflow-visible leading-[1] text-7xl md:text-9xl text-accent" style={{ fontFamily: '"Great Vibes", cursive' }}>
               Sonia Zaid
             </h1>
           </div>

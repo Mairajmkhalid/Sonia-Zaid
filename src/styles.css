@@ -272,7 +272,11 @@
   mix-blend-mode: screen;
   animation: particleFloat var(--dur, 6s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
+  animation-play-state: paused;
   opacity: 0;
+}
+.group:hover .title-particles span {
+  animation-play-state: running;
 }
 
 /* Scroll-reveal utility */
