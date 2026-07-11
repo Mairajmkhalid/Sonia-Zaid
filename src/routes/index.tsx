@@ -200,7 +200,7 @@ function Index() {
             <h2 className="gold-heading mt-4 font-serif text-3xl sm:text-4xl md:text-5xl text-accent">A note from Sonia.</h2>
           </div>
           <div className="reveal md:col-span-8">
-            <p className="font-serif text-xl italic leading-relaxed text-foreground sm:text-2xl md:text-3xl">
+            <p className="font-serif text-xl italic leading-relaxed text-foreground sm:text-2xl md:text-3xl" style={{ color: '#B76E79' }}>
               “Through effective leadership, strategic planning and unwavering dedication, we've elevated our position in the industry — witnessing the company's ascent to the 9th position with the highest growth rate.”
             </p>
             <div className="mt-8 space-y-6 text-sm leading-relaxed text-muted-foreground sm:text-base md:mt-10">
