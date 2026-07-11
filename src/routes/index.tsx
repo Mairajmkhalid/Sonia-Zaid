@@ -60,24 +60,78 @@ function Index() {
       {/* Top bar */}
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 md:px-12 md:py-4">
-        <a href="#" className="flex items-center gap-3">
-          <img
-            src={logoAsset.url}
-            alt="Sonia Zaid logo"
-            className="h-9 w-auto object-contain md:h-10"
-          />
-        </a>
-        <nav className="hidden gap-8 text-xs uppercase tracking-[0.2em] text-muted-foreground md:flex">
-          <a href="#profile" className="nav-link hover:text-foreground">Profile</a>
-          <a href="#practice" className="nav-link hover:text-foreground">Practice</a>
-          <a href="#journey" className="nav-link hover:text-foreground">Journey</a>
-          <a href="#contact" className="nav-link hover:text-foreground">Contact</a>
-        </nav>
-        <a href="#contact" className="whitespace-nowrap text-[10px] uppercase tracking-[0.2em] text-accent hover:opacity-80 sm:text-xs">
-          <span className="hidden sm:inline">Get in touch </span>
-          <span className="sm:hidden">Contact </span>→
-        </a>
+          <a href="#" className="flex items-center gap-3">
+            <img
+              src={logoAsset.url}
+              alt="Sonia Zaid logo"
+              className="h-9 w-auto object-contain md:h-10"
+            />
+          </a>
+
+          {/* Desktop nav */}
+          <nav className="hidden gap-8 text-xs uppercase tracking-[0.2em] text-muted-foreground md:flex">
+            <a href="#profile" className="nav-link hover:text-foreground">Profile</a>
+            <a href="#practice" className="nav-link hover:text-foreground">Practice</a>
+            <a href="#journey" className="nav-link hover:text-foreground">Journey</a>
+            <a href="#contact" className="nav-link hover:text-foreground">Contact</a>
+          </nav>
+
+          <div className="flex items-center gap-4">
+            <a href="#contact" className="hidden whitespace-nowrap text-[10px] uppercase tracking-[0.2em] text-accent hover:opacity-80 sm:inline sm:text-xs">
+              Get in touch →
+            </a>
+
+            {/* Mobile menu toggle */}
+            <button
+              type="button"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
+              className="grid h-10 w-10 place-items-center rounded-md border border-border/60 text-foreground transition-colors hover:bg-accent/10 md:hidden"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                {menuOpen ? (
+                  <>
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                    <line x1="6" y1="18" x2="18" y2="6" />
+                  </>
+                ) : (
+                  <>
+                    <line x1="4" y1="8" x2="20" y2="8" />
+                    <line x1="4" y1="14" x2="20" y2="14" />
+                    <line x1="4" y1="20" x2="20" y2="20" />
+                  </>
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
+
+        {/* Mobile nav dropdown */}
+        {menuOpen && (
+          <nav className="border-t border-border/60 bg-background/95 px-4 py-4 backdrop-blur-md md:hidden">
+            <div className="flex flex-col gap-4 text-sm uppercase tracking-[0.2em] text-muted-foreground">
+              <a href="#profile" onClick={() => setMenuOpen(false)} className="nav-link py-2 hover:text-foreground">Profile</a>
+              <a href="#practice" onClick={() => setMenuOpen(false)} className="nav-link py-2 hover:text-foreground">Practice</a>
+              <a href="#journey" onClick={() => setMenuOpen(false)} className="nav-link py-2 hover:text-foreground">Journey</a>
+              <a href="#contact" onClick={() => setMenuOpen(false)} className="nav-link py-2 hover:text-foreground">Contact</a>
+              <a href="#contact" onClick={() => setMenuOpen(false)} className="py-2 text-accent hover:opacity-80 sm:hidden">
+                Get in touch →
+              </a>
+            </div>
+          </nav>
+        )}
       </header>
 
       {/* Hero */}
