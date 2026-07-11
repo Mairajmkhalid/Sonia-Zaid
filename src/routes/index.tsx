@@ -11,6 +11,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const portraitRef = useRef<HTMLImageElement | null>(null);
   const heroTextRef = useRef<HTMLDivElement | null>(null);
 
