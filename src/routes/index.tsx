@@ -22,8 +22,7 @@ function Index() {
         const txt = heroTextRef.current;
         const y = window.scrollY || 0;
         if (txt) {
-          txt.style.transform = `translate3d(0, ${y * 0.08}px, 0)`;
-          txt.style.opacity = String(Math.max(0.2, 1 - y / 600));
+          txt.style.transform = `translate3d(0, ${y * 0.04}px, 0)`;
         }
       });
     };
