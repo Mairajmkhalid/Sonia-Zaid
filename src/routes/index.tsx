@@ -57,12 +57,13 @@ function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* Top bar */}
-      <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 md:px-12">
+      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12">
         <a href="#" className="flex items-center gap-3">
           <img
             src={logoAsset.url}
             alt="Sonia Zaid logo"
-            className="h-12 w-auto object-contain"
+            className="h-10 w-auto object-contain"
           />
         </a>
         <nav className="hidden gap-8 text-xs uppercase tracking-[0.2em] text-muted-foreground md:flex">
@@ -72,6 +73,7 @@ function Index() {
           <a href="#contact" className="nav-link hover:text-foreground">Contact</a>
         </nav>
         <a href="#contact" className="text-xs uppercase tracking-[0.2em] text-accent hover:opacity-80">Get in touch →</a>
+        </div>
       </header>
 
       {/* Hero */}
