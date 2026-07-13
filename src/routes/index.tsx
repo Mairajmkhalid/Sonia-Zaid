@@ -373,7 +373,7 @@ function Index() {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div>
-      <div className="font-serif text-4xl text-foreground">{value}</div>
+      <div className="font-serif text-4xl text-accent">{value}</div>
       <div className="mt-2 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{label}</div>
     </div>
   );
